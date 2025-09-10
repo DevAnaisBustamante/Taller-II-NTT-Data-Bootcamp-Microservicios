@@ -10,5 +10,5 @@ public class LoanValidationRequest {
     private BigDecimal monthlySalary;   // > 0
     private BigDecimal requestedAmount; // > 0
     private Integer termMonths;         // 1..36
-    private LocalDate lastLoanDate;     // optional
+    private LocalDate lastLoanDate;
 }
