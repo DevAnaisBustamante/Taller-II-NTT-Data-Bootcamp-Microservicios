@@ -30,30 +30,29 @@ public class LoanValidationServiceImpl implements LoanValidationService {
     private LoanValidationResult evaluate(LoanValidationRequest req) {
         List<String> reasons = new ArrayList<>();
 
-        // Rule R4 - datos validos
+        // R4 - datos validos
         boolean datosInvalidos = req.getMonthlySalary() == null || req.getRequestedAmount() == null
                 || req.getMonthlySalary() <= 0 || req.getRequestedAmount() <= 0;
         if (datosInvalidos) {
             reasons.add(Reason.DATOS_INVALIDOS.name());
         }
 
-        // Rule R2 - plazo
+        // R2 - plazo
         if (req.getTermMonths() == null || req.getTermMonths() < 1 || req.getTermMonths() > 36) {
             reasons.add(Reason.PLAZO_MAXIMO_SUPERADO.name());
         }
 
-        // monthlyPayment safe calculation
         double monthlyPayment = 0.0;
         if (req.getTermMonths() != null && req.getTermMonths() > 0 && req.getRequestedAmount() != null) {
             monthlyPayment = req.getRequestedAmount() / req.getTermMonths();
         }
 
-        // Rule R3 - capacidad de pago
+        // R3 - capacidad de pago
         if (!datosInvalidos && req.getMonthlySalary() != null && monthlyPayment > 0.4 * req.getMonthlySalary()) {
             reasons.add(Reason.CAPACIDAD_INSUFICIENTE.name());
         }
 
-        // Rule R1 - antigüedad (no loans within last 3 months inclusive)
+        // R1 - antigüedad
         if (req.getLastLoanDate() != null) {
             LocalDate today = LocalDate.now(clock);
             LocalDate since = today.minusMonths(3);
