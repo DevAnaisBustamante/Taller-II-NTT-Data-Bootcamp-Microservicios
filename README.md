@@ -1,6 +1,6 @@
 # 📌 Taller II - Loan Validation Service
 
-Microservicio desarrollado en el **NTTDATA Bootcamp Microservicios – Taller 02**.  
+Microservicio desarrollado en el **Taller 02**.  
 Este servicio valida solicitudes de préstamos aplicando reglas de negocio definidas y expone un endpoint `POST /loan-validations`.
 
 ---
@@ -52,6 +52,15 @@ El microservicio valida solicitudes de préstamos bajo las siguientes reglas:
   "requestedAmount": 6000,
   "termMonths": 24,
   "lastLoanDate": "2025-04-01"
+}
+
+````
+#### Response Body (JSON)
+```json
+{
+  "eligible": true,
+  "reasons": [],
+  "monthlyPayment": 250
 }
 
 ````
