@@ -17,16 +17,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class LoanValidationRequest {
     @NotNull
-    @DecimalMin(value = "0.01", inclusive = true)
     private Double monthlySalary;
 
     @NotNull
-    @DecimalMin(value = "0.01", inclusive = true)
     private Double requestedAmount;
 
     @NotNull
-    @Min(1)
-    @Max(36)
     private Integer termMonths;
 
     // nullable
