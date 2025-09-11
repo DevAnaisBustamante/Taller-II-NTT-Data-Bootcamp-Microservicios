@@ -1,6 +1,6 @@
 # 📌 Taller II - Loan Validation Service
 
-Microservicio desarrollado en el **NTTDATA Bootcamp Microservicios – Taller 02**.  
+Microservicio desarrollado en el **Taller 02**.  
 Este servicio valida solicitudes de préstamos aplicando reglas de negocio definidas y expone un endpoint `POST /loan-validations`.
 
 ---
@@ -55,6 +55,15 @@ El microservicio valida solicitudes de préstamos bajo las siguientes reglas:
 }
 
 ````
+#### Response Body (JSON)
+```json
+{
+  "eligible": true,
+  "reasons": [],
+  "monthlyPayment": 250
+}
+
+````
 
 ## Ejecución del microservicio
 
@@ -65,11 +74,11 @@ El microservicio valida solicitudes de préstamos bajo las siguientes reglas:
 `mvn clean test`
 
 - Reporte JaCoCo: Se genera en target/site/jacoco/index.html
-- Checkstyle: mvn checkstyle:check
+- Checkstyle: `mvn checkstyle:check`
 
 ### OpenAPI Specification
 
-El contrato está definido en src/main/resources/openapi.yaml.
+El contrato está definido en src/main/resources/openapi/loan-validation-service-v1.yaml.
 Para visualizar la documentación con Swagger UI, ejecuta la aplicación y accede a:
 
 👉 http://localhost:8080/swagger-ui.html
@@ -77,8 +86,11 @@ Para visualizar la documentación con Swagger UI, ejecuta la aplicación y acced
 ## Diagramas UML
 
 ### 1. Diagrama de Secuencia
+https://github.com/DevAnaisBustamante/Taller-II-NTT-Data-Bootcamp-Microservicios/blob/main/Diagramas%20UML/Diagrama%20de%20Secuencia.png
+https://github.com/DevAnaisBustamante/Taller-II-NTT-Data-Bootcamp-Microservicios/blob/main/Diagramas%20UML/Diagrama%20de%20Secuencias.drawio.png
 
 ### 2. Diagrama de componentes
+https://github.com/DevAnaisBustamante/Taller-II-NTT-Data-Bootcamp-Microservicios/blob/main/Diagramas%20UML/Diagrama%20de%20Componentes.png
 
 ## Autores
 
