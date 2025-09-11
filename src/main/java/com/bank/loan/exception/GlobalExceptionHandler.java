@@ -38,7 +38,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(body);
     }
 
-    // Body inválido (@Valid) en WebFlux
+    // Body inválido
     @ExceptionHandler(WebExchangeBindException.class)
     public ResponseEntity<ApiError> handleBind(WebExchangeBindException ex, ServerWebExchange exchange) {
         List<String> details = ex.getFieldErrors().stream()
@@ -55,7 +55,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(body);
     }
 
-    // Parámetros inválidos (query/path)
+    // Parámetros inválidos
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<ApiError> handleConstraint(ConstraintViolationException ex, ServerWebExchange exchange) {
         List<String> details = ex.getConstraintViolations().stream()

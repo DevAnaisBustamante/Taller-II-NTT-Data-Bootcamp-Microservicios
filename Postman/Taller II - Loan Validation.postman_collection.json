@@ -1,0 +1,197 @@
+{
+	"info": {
+		"_postman_id": "22be8f76-8a4f-4ed5-afb9-24ef862554fe",
+		"name": "Taller II - Loan Validation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48346494",
+		"_collection_link": "https://anais-bustamante-3382540.postman.co/workspace/Anais-Bustamante's-Workspace~530aad22-7137-41bc-8016-3dffcd2d8f61/collection/47470048-22be8f76-8a4f-4ed5-afb9-24ef862554fe?action=share&source=collection_link&creator=48346494"
+	},
+	"item": [
+		{
+			"name": "Validación exitosa",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"monthlySalary\": 3000,\r\n  \"requestedAmount\": 6000,\r\n  \"termMonths\": 24,\r\n  \"lastLoanDate\": \"2024-12-01\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/loan-validations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"loan-validations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Falla por préstamo reciente (R1)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"monthlySalary\": 2500,\r\n  \"requestedAmount\": 5000,\r\n  \"termMonths\": 12,\r\n  \"lastLoanDate\": \"2025-08-01\"\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/loan-validations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"loan-validations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Falla por plazo inválido (R2)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"monthlySalary\": 2000,\r\n  \"requestedAmount\": 10000,\r\n  \"termMonths\": 40,\r\n  \"lastLoanDate\": \"2024-01-01\"\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/loan-validations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"loan-validations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Falla por capacidad de pago insuficiente (R3)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"monthlySalary\": 2000,\r\n  \"requestedAmount\": 20000,\r\n  \"termMonths\": 12,\r\n  \"lastLoanDate\": \"2024-05-01\"\r\n}\r\n\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/loan-validations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"loan-validations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Falla por datos inválidos (R4)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"monthlySalary\": 0,\r\n  \"requestedAmount\": 5000,\r\n  \"termMonths\": 12,\r\n  \"lastLoanDate\": \"2024-05-01\"\r\n}\r\n\r\n\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/loan-validations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"loan-validations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request inválido (400 Bad Request)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"monthlySalary\": 2500,\r\n  \"requestedAmount\": 6000\r\n}\r\n\r\n\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/loan-validations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"loan-validations"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

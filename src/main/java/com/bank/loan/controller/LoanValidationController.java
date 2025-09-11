@@ -4,7 +4,6 @@ import com.bank.loan.dto.LoanValidationRequest;
 import com.bank.loan.dto.LoanValidationResult;
 import com.bank.loan.service.LoanValidationService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
